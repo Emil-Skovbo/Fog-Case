@@ -1,6 +1,6 @@
-#CREATE  DATABASE Fogdatabase;
+CREATE  DATABASE IF NOT EXISTS Fogdatabase;
 
-#USE Fogdatabase;
+USE Fogdatabase;
 
 #DROP TABLE IF EXISTS 'orderlist';
 #CREATE TABLE 'orderlist' (
