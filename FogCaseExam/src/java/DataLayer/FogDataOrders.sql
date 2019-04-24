@@ -18,14 +18,15 @@ roofmaterialname varchar(90) NOT NULL,
 roofmaterialprice int(11) NOT NULL
 );
 
-DROP TABLE IF EXISTS area;
-CREATE TABLE area(
+DROP TABLE IF EXISTS arearoof;
+CREATE TABLE arearoof(
 areaID int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 width int(11),
 length int(11),
 heigth int(11),
 degree int(11)
 );
+#rename table area to arearoof; 
 
 DROP TABLE IF EXISTS materials;
 CREATE TABLE materials(
