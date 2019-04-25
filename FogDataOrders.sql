@@ -11,15 +11,15 @@ USE Fogdatabase;
 
 ##DROP TABLE IF EXISTS 'order';
 
-DROP TABLE IF EXISTS roofmaterial;
-CREATE TABLE roofmaterial(
+
+CREATE TABLE if not exists roofmaterial(
 roofmaterialID int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 roofmaterialname varchar(90) NOT NULL,
 roofmaterialprice int(11) NOT NULL
 );
 
-DROP TABLE IF EXISTS arearoof;
-CREATE TABLE arearoof(
+
+CREATE TABLE if not exists arearoof(
 arearoofID int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 width int(11),
 length int(11),
@@ -28,15 +28,14 @@ degree int(11)
 );
 #rename table area to arearoof; 
 
-DROP TABLE IF EXISTS materials;
-CREATE TABLE materials(
+CREATE TABLE if not exists materials(
 materialID int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 materialPrice int(11) NOT NULL,
 materialName varchar(90)
 );
 
-DROP TABLE IF EXISTS carport;
-CREATE TABLE carport (
+
+CREATE TABLE if not exists carport (
 carportID int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 width int(11) NOT NULL,
 length int(11) NOT NULL,
@@ -45,8 +44,8 @@ materialFK int(11),
 FOREIGN KEY (materialFK) REFERENCES materials(materialID)
 );
 
-DROP TABLE IF EXISTS shed;
-CREATE TABLE shed(
+
+CREATE TABLE if not exists shed(
 shedID int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 width int(11) ,
 length int(11),
@@ -55,14 +54,14 @@ materialFK int(11),
 FOREIGN KEY (materialFK) REFERENCES materials(materialID)
 );
 
-DROP TABLE IF EXISTS roof;
-CREATE TABLE roof(
+
+CREATE TABLE if not exists roof(
 roofID int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 roofmaterialFK int(11),
 areaFK int(11),
 
 FOREIGN KEY (roofmaterialFK) REFERENCES roofmaterial(roofmaterialid),
-FOREIGN KEY (areaFK) REFERENCES arearoof(areaID)
+FOREIGN KEY (areaFK) REFERENCES arearoof(arearoofID)
 );
 
 

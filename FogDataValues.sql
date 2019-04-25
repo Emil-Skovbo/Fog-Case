@@ -29,4 +29,8 @@ select * from shed;
 insert into shed (width,length, heigth, materialFK) values(15,15,35,1);
 #REname table arearoof to area;
 
-select * from materials;
+select * from roof;
+insert into roof (roofmaterialFK, areaFK) values (1,1);
+
+select * from orders;
+insert into orders (carportFK, shedFK, roofFK) values (1,1,1);
