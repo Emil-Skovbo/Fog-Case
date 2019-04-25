@@ -161,4 +161,23 @@ public class DataMapper {
         return orders;
     }
      */
+    
+     public String getRoofMaterial(int id) throws CarportException, SQLException {
+
+        try {
+            Connection conn = Connector.connection();
+            String query = "SELECT ROOFMATERIALNAME FROM ROOFMATERIAL WHERE ID = " + id + ";";
+            PreparedStatement ps = conn.prepareStatement(query);
+            ResultSet rs = ps.executeQuery(query);
+
+            if (rs.next()) {
+                String name = rs.getString("roofmaterialname");
+                return name;
+            } else {
+                throw new CarportException("Error");
+            }
+        } catch (ClassNotFoundException ex) {
+            throw new CarportException(ex.getMessage());
+        }
+    }
 }

@@ -4,6 +4,7 @@
     Author     : fskn
 --%>
 
+<%@page import="DataLayer.CarportMapper"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,6 +15,8 @@
         <link rel="stylesheet" href = "styling.css">
     </head>
     <body>
+        <%CarportMapper cm = new CarportMapper(); %>
+        
         <form id="addRoof" action ="Frontcontroller" method="POST">
             <input type="hidden" name="action" value="order">
             <table class ="table table-striped">
@@ -26,8 +29,8 @@
                             <option value=angles></option><option value=angles>15</option><option value=" flat">20</option><option value=angles>25</option>
                             <option value=angles>30</option><option value=angles>35</option></td>
                     <td><select name=rmaterials id="option">
-                            <option value=rmaterials></option><option value=" flat">Material 1</option><option value=rmaterials>Material 2</option>
-                    <option value=rmaterials>Material 3</option><option value=rmaterials>Material 4</option></td>
+                            <option value=rmaterials></option><option value=1><%= cm.getRoofMaterial(1) %></option><option value=2><%= cm.getRoofMaterial(2) %></option>
+                            <option value=3><%= cm.getRoofMaterial(3) %></option></td>
                     <td><select name=rcolor id="option">
                             <option value=rcolor></option><option value="rcolor">Black</option><option value="rcolor">Red</option>
                             <option value="rcolor">Brown</option><option value="rcolor">Grey</option></td>                
