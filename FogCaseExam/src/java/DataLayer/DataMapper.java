@@ -20,19 +20,14 @@ import Logic.CarportException;
 
 public class DataMapper {
 
-
-    
-    public String getMatiralName(int id) throws Exception {
-                try {
+    public String getMatiralName(int id) throws CarportException {
+        try {
             Connection con = Connector.connection();
-            String SQL = "SELECT materialName FROM users " + "WHERE materialID = " + id +"; ";
+            String SQL = "SELECT materialName FROM users " + "WHERE materialID = " + id + "; ";
             PreparedStatement ps = con.prepareStatement(SQL);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 String nr = rs.getString("matterialName");
-                //int id = rs.getInt( "id" );
-                
-                //user.setId( id );
                 return nr;
             } else {
                 throw new CarportException("Could not validate user");
@@ -45,16 +40,33 @@ public class DataMapper {
     public static void createUser(User user) throws CarportException {
         try {
             Connection con = Connector.connection();
-            String SQL = "INSERT INTO users (email, password, role) VALUES (?, ?)";
+            String SQL = "INSERT INTO users (email, password) VALUES (?, ?)";
             PreparedStatement ps = con.prepareStatement(SQL, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, user.getEmail());
-            ps.setString(2, user.getPassword());     
+            ps.setString(2, user.getPassword());
             ps.executeUpdate();
         } catch (SQLException | ClassNotFoundException ex) {
             throw new CarportException(ex.getMessage());
         }
     }
 
+    public int getmaxmatiralname() throws CarportException {
+        try {
+            Connection con = Connector.connection();
+            String SQL = "SELECT max(materialID) FROM materials;";
+            PreparedStatement ps = con.prepareStatement(SQL);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                int nr = rs.getInt("matterialName");
+                return nr;
+            } else {
+                throw new CarportException("Could not validate user");
+            }
+        } catch (ClassNotFoundException | SQLException ex) {
+            throw new CarportException(ex.getMessage());
+        }
+    }
+    /*
     public static void createOrder(Order order) throws LegohouseException {
         try {
             Connection con = Connector.connection();
@@ -148,4 +160,5 @@ public class DataMapper {
         }
         return orders;
     }
+     */
 }
