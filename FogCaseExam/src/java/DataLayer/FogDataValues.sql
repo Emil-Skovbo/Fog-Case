@@ -26,4 +26,7 @@ insert into carport (width, length, heigth, materialFK) values (20,20,40,2);
 
 
 select * from shed;
+insert into shed (width,length, heigth, materialFK) values(15,15,35,1);
 #REname table arearoof to area;
+
+select * from materials;
